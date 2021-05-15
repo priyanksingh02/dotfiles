@@ -1,0 +1,44 @@
+#!/bin/sh
+
+# Use neovim for vim if present.
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+
+# Use $XINITRC variable if file exists.
+[ -f "$XINITRC" ] && alias startx="startx $XINITRC"
+
+# sudo not required for some system commands
+for x in mount umount sv pacman updatedb su ; do
+	alias $x="sudo $x"
+done
+
+alias \
+	bc="bc -ql" \
+  c="git --git-dir=$HOME/.cfg/ --work-tree=$HOME" \
+	ccat="highlight --out-format=ansi" \
+	cp="cp -iv" \
+	diff="diff --color=auto" \
+	e="$EDITOR" \
+	ffmpeg="ffmpeg -hide_banner" \
+	g="git" \
+	grep="grep --color=auto" \
+	ka="killall" \
+  l="exa --all --long " \
+	ls="ls -hN --color=auto --group-directories-first" \
+	magit="nvim -c MagitOnly" \
+	mkd="mkdir -pv" \
+	mv="mv -iv" \
+  o="open" \
+	p="sudo pacman" \
+	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" \
+	rm="rm -vI" \
+	sdn="sudo shutdown -h now" \
+	trem="transmission-remote" \
+	v="$EDITOR" \
+	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
+	xi="sudo xbps-install" \
+	xq="xbps-query" \
+	xr="sudo xbps-remove -R" \
+	yta="yt -x -f bestaudio/best" \
+	yt="youtube-dl --add-metadata -i" \
+	YT="youtube-viewer" \
+	z="zathura" \
